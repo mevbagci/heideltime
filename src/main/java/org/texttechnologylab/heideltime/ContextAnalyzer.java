@@ -250,7 +250,7 @@ public class ContextAnalyzer {
                 Logger.printDetail("hmAllRePattern.containsKey(tensePos4Past):" + rpm.get("tensePos4Past"));
                 Logger.printDetail("CHECK TOKEN:" + token.getPos());
 
-                if (token.getPos() == null) {
+                if (token.getPos() == null || token.getPos().getPosValue() == null) {
 
                 } else if ((rpm.containsKey("tensePos4PresentFuture")) && (token.getPos().getPosValue().matches(rpm.get("tensePos4PresentFuture")))) {
                     lastTense = "PRESENTFUTURE";
@@ -283,7 +283,7 @@ public class ContextAnalyzer {
                     Logger.printDetail("hmAllRePattern.containsKey(tensePos4Past):" + rpm.get("tensePos4Past"));
                     Logger.printDetail("CHECK TOKEN:" + token.getPos());
 
-                    if (token.getPos() == null) {
+                    if (token.getPos() == null || token.getPos().getPosValue() == null) {
 
                     } else if ((rpm.containsKey("tensePos4PresentFuture")) && (token.getPos().getPosValue().matches(rpm.get("tensePos4PresentFuture")))) {
                         lastTense = "PRESENTFUTURE";
