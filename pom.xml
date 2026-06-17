@@ -205,11 +205,20 @@
         <sourceDirectory>src/main/java</sourceDirectory>
         <outputDirectory>${basedir}/target/class</outputDirectory>
         <resources>
+<!--            <resource>-->
+<!--                <directory>${basedir}</directory>-->
+<!--                <includes>-->
+<!--                    <include>desc/**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
             <resource>
                 <directory>${basedir}</directory>
                 <includes>
                     <include>desc/**/*.xml</include>
                 </includes>
+                <excludes>
+                    <exclude>desc/**/*StyleMap.xml</exclude>
+                </excludes>
             </resource>
             <resource>
                 <directory>src/main/resources/</directory>
@@ -235,9 +244,20 @@
                     </execution>
                 </executions>
             </plugin>
+<!--            <plugin>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>3.5.3</version>-->
+<!--            </plugin>-->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <javax.xml.transform.TransformerFactory>
+                            com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl
+                        </javax.xml.transform.TransformerFactory>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
